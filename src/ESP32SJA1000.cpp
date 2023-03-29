@@ -70,6 +70,9 @@ int ESP32SJA1000Class::begin(long baudRate)
   modifyRegister(REG_BTR0, 0xc0, 0x40); // SJW = 1
   modifyRegister(REG_BTR1, 0x70, 0x10); // TSEG2 = 1
 
+  esp_chip_info_t chip;
+  esp_chip_info(&chip);
+
   if (baudRate >= 50E3) {
 
        if (chip.revision >= 2) {
